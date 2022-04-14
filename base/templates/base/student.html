@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+<div style="width: 70%; margin: auto; margin-top: 3%; text-align: center;">
+    <h1>{{student_name}}</h1>
+
+    {% for event in schedule %}
+    <div class="card border-primary mb-3" style="max-width: 20rem; margin: auto;">
+        <div class="card-header">{{event.time}}</div>
+        <div class="card-body">
+          <h4 class="card-title">{{event.name}}</h4>
+          <p class="card-text">Location: {{event.location}}</p>
+          <p class="card-text">Stuco Reps: {{event.stuco}}</p>
+          <p class="card-text">Staff Reps: {{event.staff}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <button type="button" class="btn btn-dark" onclick="window.location.href='/home/'">Back</button>
+</div>
+{% endblock %}

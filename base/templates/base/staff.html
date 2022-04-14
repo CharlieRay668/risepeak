@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+<div style="width: 70%; margin: auto; margin-top: 3%; text-align: center;">
+    <h1>Sophs & Seniors</h1>
+        <h3>{{ss_score}}pts</h3>
+    <h1>Frosh & Juniors</h1>
+        <h3>{{fj_score}}pts</h3>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Add to Sophs & Seniors (Use a negative value to take away score)</label>
+                <input type="number" class="form-control" id="ss_score" name="ss_score">
+            </div>
+            <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Add to Frosh & Juniors (Use a negative value to take away score)</label>
+                <input type="number" class="form-control" id="fj_score" name="fj_score">
+            </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+      </form>
+    <button type="button" class="btn btn-dark" onclick="window.location.href='/home/'">Back</button>
+</div>
+{% endblock %}
