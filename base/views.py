@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import pandas as pd
 import numpy as np
 import json
@@ -6,14 +6,14 @@ import ast
 from .models import Team
 
 # Create your views here.
+def alone(response):
+    return redirect("/home/")
+
 def base(response):
     student_lookup = pd.read_csv("student_lookup.csv")
     students = set()
     for index, row in student_lookup.iterrows():
-        print(row["students"])
         student_list = ast.literal_eval(row["students"])
-        #student_list = json.loads(row["students"])
-        print(type(student_list))
         for student_name in student_list:
             students.add(student_name)
     students = list(students)
@@ -33,7 +33,6 @@ def staff(response, staff_pass):
     fj_score = 0
     if response.method == "POST":
         data = response.POST
-        print(data)
         try:
             ss_score = int(data["ss_score"])
         except:
@@ -59,7 +58,6 @@ def staff(response, staff_pass):
     return render(response, "base/staff.html", payload)
 
 def student(response, student_name):
-    print(student_name)
     student_lookup = pd.read_csv("student_lookup.csv")
     events = pd.read_csv("base/events.csv")
     student_schedule = []
