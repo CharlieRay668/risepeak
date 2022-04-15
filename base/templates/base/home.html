@@ -13,22 +13,12 @@
         <input class="form-control form-control-lg" type="text" placeholder="Last, First" id="studentNameInput">
         <button type="button" class="btn btn-dark" onclick="viewSched()">Submit</button>
     </div>
-    <div class="form-group">
-        <label class="col-form-label col-form-label-lg mt-4" for="inputLarge">Staff Login</label>
-        <input class="form-control form-control-lg" type="text" placeholder="Staff Password" id="staffLogin">
-        <button type="button" class="btn btn-dark" onclick="staffLogin()">Submit</button>
-    </div>
 </div>
 <script>
 
     function viewSched() {
         var stud_name = document.getElementById("studentNameInput").value;
         window.location.href = "/student/"+stud_name+"/";
-    }
-
-    function staffLogin() {
-        var staff_pass = document.getElementById("staffLogin").value;
-        window.location.href = "/staff/"+staff_pass+"/";
     }
 
     function autocomplete(inp, arr) {

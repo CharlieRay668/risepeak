@@ -26,6 +26,15 @@ def base(response):
     }
     return render(response, "base/home.html", payload)
 
+def staff_only(response):
+    ss = Team.objects.get(name="ss")
+    fj = Team.objects.get(name="fj")
+    payload = {
+        "ss_score": ss.score,
+        "fj_score": fj.score,
+    }
+    return render(response, "base/staff_only.html", payload)
+
 def staff(response, staff_pass):
     if staff_pass != "5970":
         return render(response, "base/invalid.html")
